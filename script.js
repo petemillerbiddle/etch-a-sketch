@@ -12,7 +12,8 @@ for (let i = 0; i < gridDimensions; i++) {
     gridColumn = document.createElement('div');
     for (let j = 0; j < gridDimensions; j++) {
         gridSquare = document.createElement('div');
-        gridSquare.textContent = '. .';
+        gridSquare.classList.add('square');
+        //gridSquare.textContent = '. .';
         gridColumn.appendChild(gridSquare);
         gridSquare.addEventListener('mouseenter', function (e) {
             e.target.style.background = 'blue';

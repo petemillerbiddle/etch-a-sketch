@@ -6,5 +6,11 @@
 }
 
 .column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column,
+.square {
     flex: 1;
 }
