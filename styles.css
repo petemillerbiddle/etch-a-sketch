@@ -1,3 +1,10 @@
 #grid-container {
     display: flex;
+    border: solid;
+    width: 300px;
+    height: 300px
+}
+
+.column {
+    flex: 1;
 }
