@@ -4,10 +4,6 @@ let gridDimensions = 16;
 let gridColumn; 
 let gridSquare;
 
-function listenerTest(e) {
-    //alert(e.target + ' clicked');
-}
-
 const btnReset = document.querySelector('#btn-reset');
 btnReset.addEventListener('click', resetGrid);
 
@@ -17,6 +13,7 @@ btnChangeSize.addEventListener('click', changeSize);
 function displayGrid() {
     for (let i = 0; i < gridDimensions; i++) {
         gridColumn = document.createElement('div');
+        gridColumn.classList.add('column');
         for (let j = 0; j < gridDimensions; j++) {
             gridSquare = document.createElement('div');
             gridSquare.classList.add('square');
@@ -25,31 +22,31 @@ function displayGrid() {
                 e.target.classList.add('hovered');
             });
         }
-        gridColumn.classList.add('column');
         gridContainer.appendChild(gridColumn);
     }
 }
 
-function resetGrid() {
-    const gridSquares = gridContainer.getElementsByClassName('hovered');
-    const numSquares = gridSquares.length;
-    for (let i = 0; i < numSquares; i++) {
-        gridSquares[0].classList.remove('hovered'); //removes square from gridSquares[] list
-    }
-}
-
-function changeSize() {
+function removeGrid() {
     while (gridContainer.firstChild) {
         gridContainer.removeChild(gridContainer.firstChild);
     }
+}
+
+function resetGrid() {
+    removeGrid();
+    displayGrid();
+}
+
+function changeSize() {
+    removeGrid();
     let legalSize = false;
     while (!legalSize) {
         gridDimensions = prompt('how many pixels on a side? (1-100)')
-        if ((gridDimensions <= 100 && gridDimensions >= 1) && !isNaN(gridDimensions)) {
+        if ((gridDimensions >= 1 && gridDimensions <= 100) 
+                && !isNaN(gridDimensions)) {
             legalSize = true;
         }
     }
-    
     displayGrid();
 }
 
