@@ -14,3 +14,7 @@
 .square {
     flex: 1;
 }
+
+.hovered {
+    background-color: blue;
+}
